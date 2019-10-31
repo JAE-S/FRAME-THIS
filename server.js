@@ -8,7 +8,7 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 const logger = require("morgan");
-const mongoose = require("mongoose"); 
+const mongoose = require("mongoose");
 
 // Sets up the Express App
 // =========================================================
