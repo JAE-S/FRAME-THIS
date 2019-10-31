@@ -1,0 +1,38 @@
+   /* ========================================================== */
+  /*                    S T Y L E S H E E T                     */
+ /* ========================================================== */
+
+body {
+    display: flex;
+flex-direction: column;
+ min-height: 100vh;
+ position: relative;
+
+
+}
+
+header, nav{
+    background-color: #0f0f0f!important;
+    top: 0;
+    z-index: 1; 
+    width: 100%;
+    position: sticky;
+  }
+
+main {
+  background-color: rgb(201, 201, 201);
+  z-index: 0; 
+  
+  min-height: 100vh;
+}
+
+footer.page-footer {
+    background-color: #0f0f0f!important;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+}
+/* .navbar-brand, .white-text, .display-4 {
+   
+} */
