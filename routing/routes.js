@@ -6,15 +6,16 @@
 // =========================================================
     var axios = require("axios");
     var cheerio = require("cheerio");
+    var mongoose = require("mongoose");
 
 // Dependencies
 // =========================================================
   const router = require('express').Router();
   var db = require("../models");
 
-// Renders the index page
+ // Main Route - Renders the index page
 // =========================================================
-  router.get("/articles", (req, res) => {
+  router.get("/", (req, res) => {
     res.render('index');  
   });
 
@@ -23,7 +24,7 @@
   //   res.render('index');
   // });
 
- // A GET route for scraping the FRAME website
+ // Scraping Route - A GET route for scraping Show Studios' website
 // =========================================================
   // Grab the body of the html with with axios
   router.get("/scrape", function(req, res) {
@@ -42,9 +43,10 @@
         result.title = $(this)
           .children("a")
           .text();
+
         result.link = website + $(this)
           .children('a')
-          .attr("href") 
+          .attr("href"); 
           
         // If both a title and link are available -> Create a new Article using the `result` object built from scraping
         if(result.title && result.link){
@@ -64,4 +66,54 @@
       res.send("Scrape Complete");
     });
   });
+
+ // Route to retrieve data from the db
+// =========================================================
+  router.get("/articles", function(req, res) {
+    db.Article.find({})
+    .then(function(dbArticle){
+      res.json(dbArticle); 
+    })
+    .catch((error) => {
+      res.json(error); 
+    });
+  })
+
+ // Route for grabbing a specific Article by id, populate it with it's note
+// =========================================================
+  router.get("/articles/:id", function(req, res) {
+    // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+    db.Article.findOne({ _id: req.params.id })
+     // Then populate all of the notes associated with it
+     .populate("note")
+     .then(function(dbArticle) {
+       // If we were able to successfully find an Article with the given id, send it back to the client
+       res.json(dbArticle);
+     })
+     .catch(function(err) {
+       res.json(err);
+     });
+ });
+
+// Route for saving/updating an Article's associated Note
+// =========================================================
+
+  router.post("/articles/:id", function(req, res) {
+    // Create a new note and pass the req.body to the entry
+    db.Note.create(req.body)
+      .then(function(dbNote) {
+        // If a Note was created successfully, find one Article with an `_id` equal to `req.params.id`. Update the Article to be associated with the new Note
+        // { new: true } tells the query to return the updated User -- it returns the original by default
+        // Mongoose query returns a promise -> chain another `.then` which receives the result of the query
+        return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+      })
+      .then(function(dbArticle) {
+        // Update an Article, send it back to the client
+        res.json(dbArticle);
+      })
+      .catch(function(err) {
+        res.json(err);
+      });
+  });
+
   module.exports = router; 

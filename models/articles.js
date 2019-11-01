@@ -7,11 +7,11 @@ var Schema = mongoose.Schema;
 var ArticleSchema = new Schema ({
     title: {
         type: String, 
-        required: false
+        required: true
     }, 
     link: {
         type: String, 
-        required: false
+        required: true
     }, 
     note: {
         type: Schema.Types.ObjectId, 

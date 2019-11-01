@@ -20,7 +20,7 @@
 
 // Sets up for Mongoose + Heroku
 // =========================================================
-    var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/FRAME";
+    var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/FASHION-THAT";
     mongoose.connect(MONGODB_URI,  { useNewUrlParser: true })
     // Connect to mongoose database 
     mongoose.connect(MONGODB_URI, err => {
