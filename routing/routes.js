@@ -40,16 +40,24 @@
          // Files on showstudios' website are saved locally - this link adds their primary url to ensure they work 
         var website = "https://www.showstudio.com"
         // Add the text and href of every link, and save them as properties of the result object
-        result.title = $(this)
-          .children("a")
+        result.category = $(this)
+          .children("a").find('.mb4')
           .text();
+
+        result.date = $(this)
+        .children("a").find('.mt3')
+        .text();
+          
+        result.title = $(this)
+        .children("a").find('.h3')
+        .text();
 
         result.link = website + $(this)
           .children('a')
           .attr("href"); 
           
         // If both a title and link are available -> Create a new Article using the `result` object built from scraping
-        if(result.title && result.link){
+        if(result.category && result.date && result.title && result.link){
         db.Article.create(result)
           .then(function(dbArticle) {
             // View the added result in the console

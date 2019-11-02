@@ -5,6 +5,14 @@ var Schema = mongoose.Schema;
 
 // Using the Schema constructor, create a new UserSchema object 
 var ArticleSchema = new Schema ({
+    category: {
+        type: String, 
+        required: true
+    },
+    date: {
+        type: String, 
+        required: true
+    },  
     title: {
         type: String, 
         required: true
