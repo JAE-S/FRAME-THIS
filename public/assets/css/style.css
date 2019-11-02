@@ -52,3 +52,31 @@ footer.page-footer {
 .left {
   flex: 1 1 0;
 }
+
+.card .card-content {
+  padding: 5px; 
+  margin: 10px;
+}
+.card .card-action {
+  margin-top: 8px;
+}
+
+.card .card-content .card-title {
+padding: 1px;
+font-size: 18px;
+color: silver; 
+background-color: purple; 
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-small):not(.btn-large):not(.btn-floating) {
+  color: purple!important; 
+}
+
+#notes {
+  background-color: #0f0f0f!important;
+  color: silver; 
+  line-height: 2.5;
+  padding: 10px; 
+  margin: 8px; 
+
+}

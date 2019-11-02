@@ -52,12 +52,17 @@
         .children("a").find('.h3')
         .text();
 
+        result.description = $(this)
+        .children("a").find('.mt4')
+        .text();
+
+
         result.link = website + $(this)
           .children('a')
           .attr("href"); 
           
         // If both a title and link are available -> Create a new Article using the `result` object built from scraping
-        if(result.category && result.date && result.title && result.link){
+        if(result.category && result.date && result.title && result.description && result.link){
         db.Article.create(result)
           .then(function(dbArticle) {
             // View the added result in the console

@@ -9,14 +9,17 @@ $.getJSON("/articles", function(data) {
    
     // For each one
     for (var i = 0; i < data.length; i++) {
-        var container = $('<div>');
-        container.append($("<div/>")
-            .append('<div class="category">' + data[i].category + " " + '</div>')
-            .append('<div class="date">' + data[i].date + " " + '</div>')
-            .append('<div class="title">' + '<h5>' + data[i].title + " " + '</h5>' + "<a data-id='" + data[i]._id + "'>" + "Click Me" + '</a>' + '</div>'))
+        var container = $('<div class="card darken-1">');
+        container.append($("<div class='card-content' />")
+            .append('<div class="z-depth-1 card-title">' + data[i].title + " " + '</div>')
+            // .append('<p class="category ">' + data[i].category + " " + '</p>')
+            // .append('<p class="date">' + data[i].date + " " + '</p>')
+            .append('<class="description">' + data[i].description + " " + '</p>')
+            .append("<div class='card-action'>" + "<a data-id='" + data[i]._id + "'>" + "Take Notes" + "</a>" + "</div>"))
             $("#articles").append(container)
     }
-  }); 
+  });
+
 
   // Whenever someone clicks a p tag
 $(document).on("click", "a", function() {
@@ -35,9 +38,9 @@ $(document).on("click", "a", function() {
         console.log(data);
         myFrame.attr('src', data.link)
         // The title of the article
-        $("#notes").append("<h4>" + data.title + "</h4>");
+        $("#notes").append("<p class='border-lines'>" + "Notes for: " + data.title + "</p>");
         // An input to enter a new title
-        $("#notes").append("<input id='titleinput' name='title' >");
+        // $("#notes").append("<input id='titleinput' name='title' >");
             
         // A textarea to add a new note body
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
