@@ -7,6 +7,7 @@
     var axios = require("axios");
     var cheerio = require("cheerio");
     var mongoose = require("mongoose");
+    var connection = mongoose.connection;
 
 // Dependencies
 // =========================================================
@@ -128,5 +129,19 @@
         res.json(err);
       });
   });
+
+ // Route for dropping articles 
+// =========================================================
+  // Grab the body of the html with with axios
+  router.get("/drop", function(req, res) {
+     connection.db.dropCollection("articles", () => {
+        console.log("article");
+     })
+      // Send a message to the client
+      res.send("Your articles have been dropped");
+
+  });
+
+
 
   module.exports = router; 

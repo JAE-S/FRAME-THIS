@@ -21,7 +21,7 @@ $.getJSON("/articles", function(data) {
   });
 
 
-  // Whenever someone clicks a p tag
+  // on Click function for anchor tag 
 $(document).on("click", "a", function() {
     // Empty the notes from the note section
     $("#notes").empty();
