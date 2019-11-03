@@ -8,7 +8,9 @@ $('document').ready( () => {
     // Materialize functions 
     $('.carousel').carousel();
     $('.modal').modal();
-    $('select').formSelect();
+    $('.sidenav').sidenav();
+    // $('select').formSelect();
     // Materialize character counter 
     // $('input#name, input#last_name').characterCounter();
+
 }) 

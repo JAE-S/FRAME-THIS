@@ -77,7 +77,8 @@
       });
 
       // Send a message to the client
-      res.send("Scrape Complete");
+      // res.send("Scrape Complete");
+      res.redirect('/');
     });
   });
 
@@ -138,7 +139,8 @@
         console.log("article");
      })
       // Send a message to the client
-      res.send("Your articles have been dropped");
+      // res.send("Your articles have been dropped");
+      res.redirect('/');
 
   });
 

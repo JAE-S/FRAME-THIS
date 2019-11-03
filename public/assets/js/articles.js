@@ -5,21 +5,66 @@
 // Grab the articles as a json
 // =========================================================
 
+// $.getJSON("/articles", function(data) {
+   
+//     // For each one
+//     for (var i = 0; i < data.length; i++) {
+//         var container = $('<div class="card darken-1">');
+//         container.append($("<div class='card-content' />")
+//             .append('<div class="z-depth-1 card-title">' + data[i].title + " " + '</div>')
+//             // .append('<p class="category ">' + data[i].category + " " + '</p>')
+//             // .append('<p class="date">' + data[i].date + " " + '</p>')
+//             .append('<class="description">' + data[i].description + " " + '</p>')
+//             .append("<div class='card-action'>" + "<a data-id='" + data[i]._id + "'>" + "Take Notes" + "</a>" + "</div>"))
+//             $("#articles").append(container)
+//     }
+//     console.log(data.length)
+//   });
+
+// var $pagination = $('#pagination'),
+// totalRecords = 0,
+// records = [],
+// displayRecords = [],
+// recPerPage = 10,
+// page = 1
+// totalPages = 0;
+     
+function loadIt(){
+    $('#myTable').pageMe({
+        pagerSelector:'#myPager',
+        // activeColor: 'rgb(146, 0, 80)',
+        prevText:'Anterior',
+        nextText:'Siguiente',
+        showPrevNext:true,
+        hidePageNumbers:false,
+        perPage: 3
+    });
+};
+
 $.getJSON("/articles", function(data) {
    
+    var tr;
+    $('#emp_body').html('');
     // For each one
     for (var i = 0; i < data.length; i++) {
-        var container = $('<div class="card darken-1">');
-        container.append($("<div class='card-content' />")
-            .append('<div class="z-depth-1 card-title">' + data[i].title + " " + '</div>')
-            // .append('<p class="category ">' + data[i].category + " " + '</p>')
-            // .append('<p class="date">' + data[i].date + " " + '</p>')
-            .append('<class="description">' + data[i].description + " " + '</p>')
-            .append("<div class='card-action'>" + "<a data-id='" + data[i]._id + "'>" + "Take Notes" + "</a>" + "</div>"))
-            $("#articles").append(container)
-    }
-  });
+        tr = $('<tr class="article-preview" />');
+            tr.append('<td>' 
+            + '<h6 class="title center-align z-depth-2" >' + data[i].title + " " + '</h6>' 
+            + '<p class="description z-depth-2">' + data[i].description + " " + '</p>' + '<br>' 
+            + '<div class="action-buttons">'
+            + "<a class='BUTTON_NXA' data-id='" + data[i]._id + "'>" + "Add Notes " + "</a>" 
+            + "<a class='BUTTON_NXA view-notes'>" + "View Notes " + "</a>" 
+            + "<a class='BUTTON_NXA favorites'>" + "Add to Favorites" + "</a>" +
+            '</div>' +
+            '</td>')
 
+            $('#emp_body').append(tr)
+    }
+    loadIt()
+    $('.total-articles').prepend(data.length)
+    // console.log(data.length)
+    
+});
 
   // on Click function for anchor tag 
 $(document).on("click", "a", function() {
