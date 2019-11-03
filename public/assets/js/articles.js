@@ -34,8 +34,8 @@ $.getJSON("/articles", function(data) {
             + '<p class="description z-depth-2">' + data[i].description + " " + '</p>' + '<br>' 
             + '<div class="action-buttons">'
             + "<a class='BUTTON_NXA' data-id='" + data[i]._id + "'>" + "View " + data[i].category + "</a>" 
-            + "<a class='BUTTON_NXA view-notes'>" + "View Notes " + "</a>" 
-            + "<a class='BUTTON_NXA favorites'>" + "Add to Favorites" + "</a>" +
+            + "<a class='BUTTON_NXA'  data-id='n-" + data[i]._id + "'>" + "Notes " + "</a>" 
+            + "<a class='BUTTON_NXA'  data-id='s-" + data[i]._id + "'>" + "Visit Site" + "</a>" +
             '</div>' +
             '</td>')
 
@@ -58,6 +58,8 @@ $(document).on("click", "a", function() {
     $("#notes").empty();
     // Save the id from the p tag
     var thisId = $(this).attr("data-id");
+    console.log(thisId)
+    var thisSiteId = $(this).attr("s-"+"data-id");
     var myFrame = $("#myframe");
     // Now make an ajax call for the Article
     $.ajax({
@@ -67,8 +69,11 @@ $(document).on("click", "a", function() {
       // With that done, add the note information to the page
       .then(function(data) {
         console.log(data);
+        console.log()
+        console.log("this is the site id" + thisSiteId)
         // Updates the content of the iframe to match the article that was clicked
         myFrame.attr('src', data.link)
+        // thisSiteId.attr('href', data.link)
         newArticles--
         $('#new-articles').html(newArticles)
         // The title of the article
