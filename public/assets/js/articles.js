@@ -52,7 +52,7 @@ $.getJSON("/articles", function(data) {
             + '<h6 class="title center-align z-depth-2" >' + data[i].title + " " + '</h6>' 
             + '<p class="description z-depth-2">' + data[i].description + " " + '</p>' + '<br>' 
             + '<div class="action-buttons">'
-            + "<a class='BUTTON_NXA' data-id='" + data[i]._id + "'>" + "Add Notes " + "</a>" 
+            + "<a class='BUTTON_NXA' data-id='" + data[i]._id + "'>" + "View " + data[i].category + "</a>" 
             + "<a class='BUTTON_NXA view-notes'>" + "View Notes " + "</a>" 
             + "<a class='BUTTON_NXA favorites'>" + "Add to Favorites" + "</a>" +
             '</div>' +
