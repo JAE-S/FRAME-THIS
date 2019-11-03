@@ -2,33 +2,12 @@
  //                       Controllers                          //
 // ========================================================== //
 
-// Grab the articles as a json
+// Global Variables
 // =========================================================
+var newArticles = 0; 
 
-// $.getJSON("/articles", function(data) {
-   
-//     // For each one
-//     for (var i = 0; i < data.length; i++) {
-//         var container = $('<div class="card darken-1">');
-//         container.append($("<div class='card-content' />")
-//             .append('<div class="z-depth-1 card-title">' + data[i].title + " " + '</div>')
-//             // .append('<p class="category ">' + data[i].category + " " + '</p>')
-//             // .append('<p class="date">' + data[i].date + " " + '</p>')
-//             .append('<class="description">' + data[i].description + " " + '</p>')
-//             .append("<div class='card-action'>" + "<a data-id='" + data[i]._id + "'>" + "Take Notes" + "</a>" + "</div>"))
-//             $("#articles").append(container)
-//     }
-//     console.log(data.length)
-//   });
-
-// var $pagination = $('#pagination'),
-// totalRecords = 0,
-// records = [],
-// displayRecords = [],
-// recPerPage = 10,
-// page = 1
-// totalPages = 0;
-     
+// Code for pagination
+// =========================================================
 function loadIt(){
     $('#myTable').pageMe({
         pagerSelector:'#myPager',
@@ -41,6 +20,8 @@ function loadIt(){
     });
 };
 
+// Grab the articles as a json
+// =========================================================
 $.getJSON("/articles", function(data) {
    
     var tr;
@@ -61,13 +42,18 @@ $.getJSON("/articles", function(data) {
             $('#emp_body').append(tr)
     }
     loadIt()
-    $('.total-articles').prepend(data.length)
+    newArticles = data.length
+    $('#new-articles').prepend(newArticles)
+    $('.total-articles').prepend(newArticles)
     // console.log(data.length)
-    
 });
 
+
+// Grab the articles as a json
+// =========================================================
   // on Click function for anchor tag 
 $(document).on("click", "a", function() {
+    console.log(newArticles)
     // Empty the notes from the note section
     $("#notes").empty();
     // Save the id from the p tag
@@ -81,7 +67,10 @@ $(document).on("click", "a", function() {
       // With that done, add the note information to the page
       .then(function(data) {
         console.log(data);
+        // Updates the content of the iframe to match the article that was clicked
         myFrame.attr('src', data.link)
+        newArticles--
+        $('#new-articles').html(newArticles)
         // The title of the article
         $("#notes").append("<p class='border-lines'>" + "Notes for: " + data.title + "</p>");
         // An input to enter a new title
