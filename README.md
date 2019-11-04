@@ -1,7 +1,7 @@
 
 # Welcome to Fashion That
 
-#### Fashion That is a web application that allows Fashion enthusiasts to review the latest articles from Showstudios'. Utilizing an i-frame users can now view articles and take notes all in one place without ever leaving the browser window (although that option is provided as well).
+#### Fashion That is a web application that allows Fashion enthusiasts to review the latest articles from SHOWstudios'. Utilizing an i-frame users can now view articles and take notes all in one place without ever leaving the browser window (although that option is provided as well).
 
 ---
 
