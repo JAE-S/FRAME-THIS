@@ -5,6 +5,7 @@
 // Global Variables
 // =========================================================
 var newArticles = 0; 
+$("#notes").hide();
 
 // Code for pagination
 // =========================================================
@@ -16,7 +17,7 @@ function loadIt(){
         nextText:'Siguiente',
         showPrevNext:true,
         hidePageNumbers:false,
-        perPage: 3
+        perPage: 2
     });
 };
 
@@ -34,8 +35,8 @@ $.getJSON("/articles", function(data) {
             + '<p class="description z-depth-2">' + data[i].description + " " + '</p>' + '<br>' 
             + '<div class="action-buttons">'
             + "<a class='BUTTON_NXA' data-id='" + data[i]._id + "'>" + "View " + data[i].category + "</a>" 
-            + "<a class='BUTTON_NXA'  data-id='n-" + data[i]._id + "'>" + "Notes " + "</a>" 
-            + "<a class='BUTTON_NXA'  data-id='s-" + data[i]._id + "'>" + "Visit Site" + "</a>" +
+            // + "<a class='BUTTON_NXA' data-id='n-" + data[i]._id + "'>" + "Notes " + "</a>" 
+            + "<a class='BUTTON_NXA' target='_blank' href='" + data[i].link + "' data-id='s-" + data[i]._id + "'>" + "Visit Site" + "</a>" +
             '</div>' +
             '</td>')
 
@@ -53,13 +54,12 @@ $.getJSON("/articles", function(data) {
 // =========================================================
   // on Click function for anchor tag 
 $(document).on("click", "a", function() {
-    console.log(newArticles)
+    $("#notes").show(); 
     // Empty the notes from the note section
     $("#notes").empty();
     // Save the id from the p tag
     var thisId = $(this).attr("data-id");
-    console.log(thisId)
-    var thisSiteId = $(this).attr("s-"+"data-id");
+    // console.log(thisId)
     var myFrame = $("#myframe");
     // Now make an ajax call for the Article
     $.ajax({
@@ -69,8 +69,6 @@ $(document).on("click", "a", function() {
       // With that done, add the note information to the page
       .then(function(data) {
         console.log(data);
-        console.log()
-        console.log("this is the site id" + thisSiteId)
         // Updates the content of the iframe to match the article that was clicked
         myFrame.attr('src', data.link)
         // thisSiteId.attr('href', data.link)
@@ -78,15 +76,16 @@ $(document).on("click", "a", function() {
         $('#new-articles').html(newArticles)
         // The title of the article
         $("#notes").append("<p class='border-lines'>" + "Notes for: " + data.title + "</p>");
+        console.log(data.title)
         // An input to enter a new title
-        // $("#notes").append("<input id='titleinput' name='title' >");
+        $("#notes").append("<input id='titleinput' placeholder='Please enter your username' name='title' >");
             
         // A textarea to add a new note body
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
-        $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+        $("#notes").append("<button class='BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
   
-        // If there's a note in the article
+        // If there's a note in the articlex
         if (data.note) {
           // Place the title of the note in the title input
           $("#titleinput").val(data.note.title);
