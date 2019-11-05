@@ -20,7 +20,7 @@ function loadIt(){
         nextText:'Siguiente',
         showPrevNext:true,
         hidePageNumbers:false,
-        perPage: 2
+        perPage: 3
     });
 };
 
@@ -38,7 +38,6 @@ $.getJSON("/articles", function(data) {
             + '<p class="description z-depth-2">' + data[i].description + " " + '</p>' + '<br>' 
             + '<div class="action-buttons">'
             + "<a class='view-article BUTTON_NXA' data-id='" + data[i]._id + "'>" + "View " + data[i].category + "</a>" 
-            // + "<a class='BUTTON_NXA' data-id='n-" + data[i]._id + "'>" + "Notes " + "</a>" 
             + "<a class='BUTTON_NXA' target='_blank' href='" + data[i].link + "' data-id='s-" + data[i]._id + "'>" + "Visit Site" + "</a>" +
             '</div>' +
             '</td>')
@@ -141,7 +140,7 @@ $.getJSON("/articles", function(data) {
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $("#notes").append("<button class='left-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
-  
+        var name = data.title
         // If there's a note in the article
         if (data.note) {
           // Place the title of the note in the title input
