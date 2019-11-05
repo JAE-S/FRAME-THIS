@@ -256,3 +256,9 @@ font-style: normal;
   line-height: 2; 
   color: #920050;
 }
+
+#oldNotes {
+  max-height: 200px; 
+  overflow: scroll; 
+  padding-top: 10px;
+}

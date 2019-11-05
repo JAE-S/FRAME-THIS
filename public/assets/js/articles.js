@@ -115,7 +115,7 @@ var title;
           + '<h6 class="left-align" >' + '<a class="article-details">'+ "Category: " + '</a>' + data.category + " " + '</h6>' 
           + '<h6 class="left-align">' + '<a class="article-details">' + "Title: " + '</a>' + data.title + " " + '</h6>' 
           + '<h6 class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</h6>' 
-          + '<p class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</p>' + '<br>' 
+          + '<h6 class="left-align">' + '<a class="article-details">' + "Description: " + '</h6>' + data.description + " " + '</p>' + '<br>' 
           + '</div>')
           $('#add').append(content)
         // The title of the article
@@ -141,21 +141,14 @@ var title;
             // For each one
             for (var i = 0; i < notes.length; i++) {
               if (notes[i].name === title) {
-                console.log(notes)
-                // for (var a = 0; a < notes.length; a++) {
+                // console.log(notes)
                 $('#oldNotes').append('<div>'
-
                     + '<h6>' + notes[i].title + " " + '</h6>' 
                     + '<p>' + notes[i].created.toString() + " " + '</p>' 
-                    + '<p>' + notes[i].body + " " + '</p>' 
-                //    
+                    + '<p>' + notes[i].body + " " + '</p>'  
                     + '</div>')
-              
-          
-                //     $('#emp_body').append(tr)
-                // }
+              }
             }
-          }
           })
         } 
     })
