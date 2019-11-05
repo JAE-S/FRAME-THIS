@@ -63,3 +63,7 @@ typings/
 node_modules
 
 .env
+
+routes.js
+test.js
+saved.js

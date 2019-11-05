@@ -9,6 +9,7 @@
     const exphbs = require("express-handlebars");
     const logger = require("morgan");
     const mongoose = require("mongoose");
+    var db = require("./models");
 
 // Sets up the Express App
 // =========================================================
@@ -49,12 +50,13 @@
 
 // Route
 // =========================================================
-    var routes = require("./routing/routes.js");
-    app.use(routes); 
-
+    app.use(require('./routing/api_routes.js')(db));
+    app.use(require('./routing/html_routes.js')(db));
 
 // Starts the server
 // =========================================================
     app.listen(PORT, () => {
         console.log("App running on port " + PORT  + "!");
     });
+
+    module.exports = app;

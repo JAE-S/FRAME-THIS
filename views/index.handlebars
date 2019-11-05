@@ -1,5 +1,7 @@
  {{> top_nav}} 
+   {{> modal_clear_data}}
    <main>
+   
       <section class="center-align">
         <div class="box"> 
           
@@ -9,14 +11,15 @@
           </div>
 
           <div class="right-box">
-            <h5 class="total-articles"> Articles Found</h5>
-            <div class="row" style="margin: 8px;">
-              <div class="col-md-12 center text-center">
-                <ul class="pagination pager" id="myPager"></ul>
-              </div>
+            <section id="article-results">
+              <h5 class="total-articles"> Articles Found</h5>
+              
+              <div class="row" style="margin: 8px;">
+                <div class="col-md-12 center text-center">
+                  <ul class="pagination pager" id="myPager"></ul>
+                </div>
                 
                 <section>
-
                   <table cellpadding="1" cellspacing="1" class=" table table-hover highlight" id="myTable">
                     <thead>
                     </thead>
@@ -25,10 +28,15 @@
                   </table>
 
                 </section>
-            </div>
-             <div id="notes" >
-                <h5 style="color: ">Notes</h5>
-             </div>
+
+              </div>
+            </section>
+            <section id="view-article-container">
+              <div id="add"> </div>
+              <div id="notes" >
+                  <h5 style="color: ">Notes</h5>
+              </div>
+            </section>
           </div>
              <div id="links" style="height: 200px; overflow: scroll"></div>
           </div>

@@ -75,10 +75,10 @@ background-image: linear-gradient(to top, #920050, #E0007B);
 }
 
 #notes {
-  background-color: #0f0f0f!important;
-  color: silver; 
+  /* background-color: #0f0f0f!important; */
+  /* color: silver;  */
   line-height: 2.5;
-  padding: 10px; 
+  /* padding: 10px;  */
   margin: 8px; 
 
 }
@@ -180,3 +180,33 @@ td {
   height: 700px; 
   border: 20px double black;
 }
+
+#titleinput, #titleinput:active { 
+  border-bottom: none; 
+  box-shadow: none;
+}
+input:not([type]):focus:not([readonly]) {
+  border-bottom: none; 
+}
+
+input:not([type]) {
+  color: grey;
+  border-bottom: none; 
+
+}
+input::-webkit-input-placeholder {
+  color:grey !important;
+  }
+   
+  input:-moz-placeholder { /* Firefox 18- */
+  color: grey !important;  
+  }
+   
+  input::-moz-placeholder {  /* Firefox 19+ */
+  color: grey !important;  
+  }
+   
+  input:-ms-input-placeholder {  
+  color: grey  !important;  
+  }
+
