@@ -237,3 +237,22 @@ body p, body a, .BUTTON_NXA {
 font-weight: 300;
 font-style: normal;
 }
+
+.notes-title {
+  color: #920050; 
+  border-top: 2px solid #920050; 
+  border-bottom: 2px solid #920050; 
+  padding: 8px;
+}
+
+.add-note {
+  color: #920050; 
+  border-bottom: 1px solid #920050; 
+  padding: 8px; 
+  margin-top: 20px;
+}
+
+.article-details {
+  line-height: 2; 
+  color: #920050;
+}

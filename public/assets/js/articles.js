@@ -112,18 +112,18 @@ var title;
         content.html( "<a class='left-align go-back BUTTON_NXA'>" + "Go Back" + "</a>" 
           + "<a class='right-align view-article BUTTON_NXA' target='_blank' href='" + data.link + "'>" + "Visit site" + "</a>" 
           + '<div class="description z-depth-2" style="margin: 20px 8px">'
-          + '<h6 class="left-align" style="line-height: 2; color: #920050" >' + "Category: " + data.category + " " + '</h6>' 
-          + '<h6 class="left-align" style="line-height: 2; color: #920050">' + "Title: " + data.title + " " + '</h6>' 
-          + '<h6 class="left-align" style="line-height: 2; color: #920050" >' + "Date Published: " + data.date + " " + '</h6>' 
-          + '<p class="left-align">' + "Description: " + data.description + " " + '</p>' + '<br>' 
+          + '<h6 class="left-align" >' + '<a class="article-details">'+ "Category: " + '</a>' + data.category + " " + '</h6>' 
+          + '<h6 class="left-align">' + '<a class="article-details">' + "Title: " + '</a>' + data.title + " " + '</h6>' 
+          + '<h6 class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</h6>' 
+          + '<p class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</p>' + '<br>' 
           + '</div>')
           $('#add').append(content)
         // The title of the article
-        $("#notes").append("<h6 class='border-lines' style='color: #920050; border-top: 2px solid #920050; border-bottom: 2px solid #920050; padding: 8px' >" + "Notes for: " + data.title + "</h6>");
+        $("#notes").append("<h6 class='border-lines notes-title'>" + "Notes for: " + data.title + "</h6>");
 
         $("#notes").append("<div id='oldNotes'>");
 
-        $("#notes").append("<h6 class='left-align border-lines' style='color: #920050; border-bottom: 1px solid #920050; padding: 8px; margin-top: 20px' >" + "Add a note " + "</h6>");
+        $("#notes").append("<h6 class='left-align border-lines add-note'>" + "Add a note " + "</h6>");
         // An input to enter a new title
         $("#notes").append("<input autocomplete='off' id='titleinput' placeholder='Please enter a user name' name='title'>");
     
