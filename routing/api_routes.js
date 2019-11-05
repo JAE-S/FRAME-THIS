@@ -18,9 +18,13 @@ module.exports = function(db) {
     // Show viewed Articles 
     router.put("/articles/:id", appController.updateArticles)
 
-    router.get("/articles/:id", appController.populateNote)
+    router.get("/articles-notes/", appController.populateNote)
 
     router.post("/articles/:id", appController.postNote)
+
+    router.get("/notes", appController.getNote)
+
+    router.get("/notes/:id", appController.getNoteId)
 
     return router; 
 }

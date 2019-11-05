@@ -8,45 +8,47 @@ var newArticles = 0;
 var totalArticles = 0; 
 $("#notes").hide();
 $('#article-results').show();
-
+var title;
 
 // Grab the articles as a json
 // =========================================================
-$.getJSON("/articles", function(data) {
-   
-    var tr;
-    $('#emp_body').html('');
-    // For each one
-    for (var i = 0; i < data.length; i++) {
-        tr = $('<tr class="article-preview" />');
-            tr.append('<td>' 
-            + '<h6 class="title center-align z-depth-2" >' + data[i].title + " " + '</h6>' 
-            + '<p class="description z-depth-2">' + data[i].description + " " + '</p>' + '<br>' 
-            + '<div class="action-buttons">'
-            + "<a class='view-article BUTTON_NXA' data-id='" + data[i]._id + "'>" + "View " + data[i].category + "</a>" 
-            + "<a class='BUTTON_NXA' target='_blank' href='" + data[i].link + "' data-id='s-" + data[i]._id + "'>" + "Visit Site" + "</a>" +
-            '</div>' +
-            '</td>')
-
-            $('#emp_body').append(tr)
-        if (!data[i].opened){
-          newArticles++
-        }
-    }
-    loadIt()
+  $.getJSON("/articles", function(data) {
     
-   
-    totalArticles = data.length
-    $('#new-articles').prepend(newArticles)
-    $('.total-articles').prepend(totalArticles)
-    noArticles()
-});
+      var tr;
+      $('#emp_body').html('');
+      // For each one
+      for (var i = 0; i < data.length; i++) {
+          tr = $('<tr class="article-preview" />');
+              tr.append('<td>' 
+              + '<h6 class="title center-align z-depth-2" >' + data[i].title + " " + '</h6>' 
+              + '<p class="description z-depth-2">' + data[i].description + " " + '</p>' + '<br>' 
+              + '<div class="action-buttons">'
+              + "<a class='view-article BUTTON_NXA' data-id='" + data[i]._id + "'>" + "View " + data[i].category + "</a>" 
+              + "<a class='BUTTON_NXA' target='_blank' href='" + data[i].link + "' data-id='s-" + data[i]._id + "'>" + "Visit Site" + "</a>" +
+              '</div>' +
+              '</td>')
+
+              $('#emp_body').append(tr)
+          if (!data[i].opened){
+            newArticles++
+          }
+      }
+      loadIt()
+      
+    
+      totalArticles = data.length
+      $('#new-articles').prepend(newArticles)
+      $('.total-articles').prepend(totalArticles)
+      noArticles()
+  });
   
-  // When you click the savenote button
-  $(document).on("click", "#savenote", function() {
+ // Save a note 
+// =========================================================
+  $(document).on("click", "#savenote", function(event) {
+    event.preventDefault();
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
-  
+   
     // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
       method: "POST",
@@ -55,22 +57,24 @@ $.getJSON("/articles", function(data) {
         // Value taken from title input
         title: $("#titleinput").val(),
         // Value taken from note textarea
-        body: $("#bodyinput").val()
+        body: $("#bodyinput").val(),
+        name: title
       }
     })
       // With that done
       .then(function() {
-        // Log the response
-        // Empty the notes section
-        $("#notes").empty();
+      
+        title = ("");
       });
   
     // Also, remove the values entered in the input and textarea for note entry
     $("#titleinput").val("");
     $("#bodyinput").val("");
+    location.reload();
   });
 
-
+ // On Click view the article / add & view notes 
+// =========================================================
   $(document).on("click", ".view-article", function() {
     $(".info").empty();
     $('#article-results').hide();
@@ -92,7 +96,6 @@ $.getJSON("/articles", function(data) {
 
         if (!data.opened){
          
-      
         $('#add').append(content)
         // contentGenerated = true; 
           newArticles--
@@ -118,7 +121,7 @@ $.getJSON("/articles", function(data) {
         // The title of the article
         $("#notes").append("<h6 class='border-lines' style='color: #920050; border-top: 2px solid #920050; border-bottom: 2px solid #920050; padding: 8px' >" + "Notes for: " + data.title + "</h6>");
 
-        $("#notes").append("<p class='border-lines'>" + "There are currently 0 notes" + "</p>");
+        $("#notes").append("<div id='oldNotes'>");
 
         $("#notes").append("<h6 class='left-align border-lines' style='color: #920050; border-bottom: 1px solid #920050; padding: 8px; margin-top: 20px' >" + "Add a note " + "</h6>");
         // An input to enter a new title
@@ -128,13 +131,32 @@ $.getJSON("/articles", function(data) {
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $("#notes").append("<button class='left-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
-    
+        
+        title = data.title
         // If there's a note in the article
         if (data.note) {
-          // Place the title of the note in the title input
-          $("#titleinput").val(data.note.title);
-          // Place the body of the note in the body textarea
-          $("#bodyinput").val(data.note.body);
+         
+          $.getJSON("/notes", function(notes) {
+        
+            // For each one
+            for (var i = 0; i < notes.length; i++) {
+              if (notes[i].name === title) {
+                console.log(notes)
+                // for (var a = 0; a < notes.length; a++) {
+                $('#oldNotes').append('<div>'
+
+                    + '<h6>' + notes[i].title + " " + '</h6>' 
+                    + '<p>' + notes[i].created.toString() + " " + '</p>' 
+                    + '<p>' + notes[i].body + " " + '</p>' 
+                //    
+                    + '</div>')
+              
+          
+                //     $('#emp_body').append(tr)
+                // }
+            }
+          }
+          })
         } 
     })
     

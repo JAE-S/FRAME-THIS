@@ -37,8 +37,8 @@ module.exports = db => {
         // Grab a specific Article by id, populate it with it's note
         // =========================================================  
         populateNote: (req, res) => {
-          db.Article.findOne({
-            _id: req.params.id
+          db.Article.find({
+            // _id: req.params.id
         })
         .populate("note")
         .then(dbArticle => res.json(dbArticle))
@@ -50,7 +50,7 @@ module.exports = db => {
         postNote: (req, res) => {
           db.Note.create(req.body)
           .then(dbNote => {
-            return db.Saved.findOneAndUpdate({
+            return db.Article.findOneAndUpdate({
               _id: req.params.id 
             }, { 
               note: dbNote._id 
@@ -58,10 +58,25 @@ module.exports = db => {
               new: true 
             });
           })
-          .then(dbSaved => console.log(dbSaved))
+          .then(dbArticle => console.log(dbArticle))
           .catch(err => res.json(err));
-        }
-      } 
-   
-
+        },
+        // Get article by ID 
+       // =========================================================
+        getNote: (req, res) => {
+          db.Note.find({
+              // _id: req.params.id
+          })
+          .then(dbNote => res.json(dbNote))
+          .catch(err => res.json(err))
+      },
+        getNoteId: (req, res) => {
+        db.Note.findOne({
+            _id: req.params.id
+        })
+        .then(dbNote => res.json(dbNote))
+        .catch(err => res.json(err))
+     }
+  
+}
 }
