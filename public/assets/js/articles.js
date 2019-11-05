@@ -8,21 +8,7 @@ var newArticles = 0;
 var totalArticles = 0; 
 $("#notes").hide();
 $('#article-results').show();
-$('#view-article-container').hide();
 
-// Code for pagination
-// =========================================================
-function loadIt(){
-    $('#myTable').pageMe({
-        pagerSelector:'#myPager',
-        // activeColor: 'rgb(146, 0, 80)',
-        prevText:'Anterior',
-        nextText:'Siguiente',
-        showPrevNext:true,
-        hidePageNumbers:false,
-        perPage: 3
-    });
-};
 
 // Grab the articles as a json
 // =========================================================
@@ -48,9 +34,12 @@ $.getJSON("/articles", function(data) {
         }
     }
     loadIt()
+    
+   
     totalArticles = data.length
     $('#new-articles').prepend(newArticles)
     $('.total-articles').prepend(totalArticles)
+    noArticles()
 });
   
   // When you click the savenote button
@@ -149,21 +138,5 @@ $.getJSON("/articles", function(data) {
         } 
     })
     
-
-  })
-
-
-  $(document).on("click", "#scrape", function() {
-    if(newArticles > 0){
-      console.log("Please clear the current Articles first")
-    } else {
-      $('#scrape').attr('href', "/scrape" )
-    }
-  })
-
-  $(document).on("click", '.go-back', function() {
-    $('#article-results').show();
-    $('#view-article-container').hide();
-
   })
 
