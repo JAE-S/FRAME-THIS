@@ -10,9 +10,9 @@ var NoteSchema = new Schema({
         type: String, 
         required: true
     }, 
-    name: {
-        type: String, 
-        Required: true
+    created: { 
+        type: Date,
+        default: Date.now
     }, 
     body: {
         type: String, 
