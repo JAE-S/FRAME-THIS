@@ -115,20 +115,20 @@ var title;
           + '<h6 class="left-align" >' + '<a class="article-details">'+ "Category: " + '</a>' + data.category + " " + '</h6>' 
           + '<h6 class="left-align">' + '<a class="article-details">' + "Title: " + '</a>' + data.title + " " + '</h6>' 
           + '<h6 class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</h6>' 
-          + '<h6 class="left-align">' + '<a class="article-details">' + "Description: " + '</h6>' + data.description + " " + '</p>' + '<br>' 
+          + '<h6 class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</h6>' + '<br>' 
           + '</div>')
           $('#add').append(content)
         // The title of the article
-        $("#notes").append("<h6 class='border-lines notes-title'>" + "Notes for: " + data.title + "</h6>");
+        $("#notes").append("<h5 class='border-lines notes-title'>" + "Notes for: " + data.title + "</h5>");
 
-        $("#notes").append("<div id='oldNotes'>");
+        $("#notes").append("<div class='left-align' id='oldNotes'>");
 
-        $("#notes").append("<h6 class='left-align border-lines add-note'>" + "Add a note " + "</h6>");
+        // $("#notes").append("<h6 class='left-align border-lines add-note'>");
         // An input to enter a new title
-        $("#notes").append("<input autocomplete='off' id='titleinput' placeholder='Please enter a user name' name='title'>");
+        $("#notes").append("<input class='add-note' autocomplete='off' id='titleinput' placeholder='To create a new note please enter your name' name='title'>");
     
         // A textarea to add a new note body
-        $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
+        $("#notes").append("<textarea id='bodyinput' name='body'>Add your note here</textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $("#notes").append("<button class='left-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
         
@@ -142,11 +142,9 @@ var title;
             for (var i = 0; i < notes.length; i++) {
               if (notes[i].name === title) {
                 // console.log(notes)
-                $('#oldNotes').append('<div>'
-                    + '<h6>' + notes[i].title + " " + '</h6>' 
-                    + '<p>' + notes[i].created.toString() + " " + '</p>' 
-                    + '<p>' + notes[i].body + " " + '</p>'  
-                    + '</div>')
+                $('#oldNotes').append( '<p>'+ '<a class="delete">' + '| DELETE | ' + '</a>' + '<a class="date">' + notes[i].created.toString() + " " + '</a>' 
+                 + notes[i].title + " " + '<br>' 
+                 + notes[i].body + " " + '</p>')
               }
             }
           })
