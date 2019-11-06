@@ -11,7 +11,10 @@ $('document').ready( () => {
     // Materialize functions 
     $('.carousel').carousel();
     $('.modal').modal();
-    // $('.sidenav').sidenav();
+    $('.sidenav').sidenav();
+    $('#bodyinput').val('New Text');
+    $('#bodyinput').trigger('autoresize');
+          
     // $('select').formSelect();
     // Materialize character counter 
     // $('input#name, input#last_name').characterCounter();

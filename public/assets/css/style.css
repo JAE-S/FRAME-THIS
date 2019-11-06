@@ -243,14 +243,15 @@ font-style: normal;
   border-top: 2px solid #920050; 
   border-bottom: 2px solid #920050; 
   padding: 8px;
+  margin: 0!important; 
 }
 
 .add-note, #titleinput  {
   color: #920050; 
-  border-top: 1px solid #920050; 
+  /* border-top: 1px solid #920050;  */
   border-bottom: 1px solid #920050; 
   /* padding: 8px;  */
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .article-details {
@@ -271,4 +272,20 @@ font-style: normal;
 .date, .delete {
   font-size: .8em;
   color:  #920050; 
+}
+
+.input-labels {
+  padding-top: 13px!important; 
+  color:  #920050; 
+  /* margin-left: 8px!important; */
+}
+
+#savenote {
+  margin-top: 0!important; 
+  display: block;
+}
+
+#add-notes-box {
+  margin-left: 8px; 
+  margin-right: 8px; 
 }

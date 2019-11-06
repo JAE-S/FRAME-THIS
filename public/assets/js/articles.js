@@ -117,20 +117,22 @@ var title;
           + '<h6 class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</h6>' 
           + '<h6 class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</h6>' + '<br>' 
           + '</div>')
-          $('#add').append(content)
+
+        $('#add').append(content)
         // The title of the article
         $("#notes").append("<h5 class='border-lines notes-title'>" + "Notes for: " + data.title + "</h5>");
-
+        // Notes saved in the database
         $("#notes").append("<div class='left-align' id='oldNotes'>");
 
-        // $("#notes").append("<h6 class='left-align border-lines add-note'>");
-        // An input to enter a new title
-        $("#notes").append("<input class='add-note' autocomplete='off' id='titleinput' placeholder='To create a new note please enter your name' name='title'>");
+        $(".input-labels").append("<h6 class='row'>" + "Username: " + "</h6>");
+        $(".input-labels").append("<h6 class='row'>" + "Add Note: " + "</h6>");
+        // An Input to save the user's name 
+        $(".input-boxes").append("<input class=' row add-note' autocomplete='off' id='titleinput' placeholder='To create a new note please enter your name' name='title'>");
     
         // A textarea to add a new note body
-        $("#notes").append("<textarea id='bodyinput' name='body'>Add your note here</textarea>");
+        $(".input-boxes").append("<textarea class='row' id='bodyinput' name='body'>Add your note here</textarea>");
         // A button to submit a new note, with the id of the article saved to it
-        $("#notes").append("<button class='left-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
+        $(".input-boxes").append("<button class='right-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
         
         title = data.title
         // If there's a note in the article
