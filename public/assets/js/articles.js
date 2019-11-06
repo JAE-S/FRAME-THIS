@@ -4,19 +4,25 @@
 
 // Global Variables
 // =========================================================
-var newArticles = 0; 
-var totalArticles = 0; 
-$("#notes").hide();
-$('#article-results').show();
-var title;
+  // Tracks articles that haven't been viewed 
+  var newArticles = 0;             
+  // Tracks the total number of articles that were found
+  var totalArticles = 0;          
+  // Stores the title information so it can be accessed by notes 
+  var title;
 
-// Grab the articles as a json
+ // Hidden elements on load 
+// =========================================================
+  $("#notes").hide();
+  $('#article-results').show();
+
+ // Grabs the articles as a json
 // =========================================================
   $.getJSON("/articles", function(data) {
-    
-      var tr;
-      $('#emp_body').html('');
-      // For each one
+    $('#emp_body').html('');
+    var tr;
+      
+      // For each article generate the following html elements
       for (var i = 0; i < data.length; i++) {
           tr = $('<tr class="article-preview" />');
               tr.append('<td>' 
@@ -28,17 +34,21 @@ var title;
               '</div>' +
               '</td>')
 
-              $('#emp_body').append(tr)
+          $('#emp_body').append(tr)
+          // Counts the newly generated elements 
           if (!data[i].opened){
             newArticles++
           }
       }
+      // Function for pagination -> Code under custom.js file 
       loadIt()
-      
-    
+      // Sets the total number of generated elements to the totalArticles variable 
       totalArticles = data.length
+
       $('#new-articles').prepend(newArticles)
       $('.total-articles').prepend(totalArticles)
+      // Function for noArticles  -> Code under custom.js file  
+      // Lets users know that no articles were found 
       noArticles()
   });
   
@@ -61,9 +71,8 @@ var title;
         name: title
       }
     })
-      // With that done
+      // With that done clear the title data 
       .then(function() {
-        // $('#add-notes-box').empty();
         title = ("");
       });
   
@@ -96,14 +105,16 @@ var title;
     })
       .then(function(data) {
         console.log(data);
-
+        // Set the iframe to the link associated with the article 
         myFrame.attr('src', data.link)
+
+        title = data.title
 
         if (!data.opened){
          
-        $('#add').append(content)
-        // contentGenerated = true; 
+          $('#add').append(content)
           newArticles--
+
           $.ajax({
             method: "PUT",
             url: "/articles/" + thisId,
@@ -113,45 +124,47 @@ var title;
               console.log("This article has been viewed " + data.opened);
             })
         }
+        // Adds the article's (that was clicked) information to the notes view
         var content = $('<div class="info">');
-        content.html( "<a class='left-align go-back BUTTON_NXA'>" + "Go Back" + "</a>" 
-          + "<a class='right-align view-article BUTTON_NXA' target='_blank' href='" + data.link + "'>" + "Visit site" + "</a>" 
-        
+        content.html( 
+          // Buttons -> Go Back & visit site 
+            '<a class="left-align go-back BUTTON_NXA">' + "Go Back" + '</a>' 
+          + '<a class="right-align view-article BUTTON_NXA" target="_blank" href="' + data.link + '">' + "Visit site" + '</a>'
+          // Article details 
           + '<div class="description z-depth-2" style="margin: 20px 8px">'
-          +"<h5 class='headline left-align border-lines'>" + data.title + "</h5>" 
+          + '<h5 class="headline left-align border-line">' + title + '</h5>' 
           + '<p class="left-align" >' + '<a class="article-details">'+ "Category: " + '</a>' + data.category + " " + '</p>' 
-          // + '<p class="left-align">' + '<a class="article-details">' + "Title: " + '</a>' + data.title + " " + '</p>' 
           + '<p class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</p>' 
           + '<p class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</p>' 
           + '</div>')
 
         $('#add').append(content)
-        // The title of the article
+
+        // Notes Section header 
         $("#notes").append("<h5 class='border-lines notes-title'>" + "Notes" + "</h5>");
-        // Notes saved in the database
+        // Creates a div to store notes that are currently in the database 
         $("#notes").append("<div class='left-align' id='oldNotes'>");
 
         $(".input-labels").append("<p class='row'>" + "Username: " + "</p>");
-        $(".input-labels").append("<p class='row'>" + "Add Note: " + "</p>");
+        $(".input-labels").append("<p class='row'>" + "Note: " + "</p>");
+
         // An Input to save the user's name 
         $(".input-boxes").append("<input class=' row add-note' autocomplete='off' id='titleinput' placeholder='Jane' name='title'>");
-    
         // A textarea to add a new note body
         $(".input-boxes").append("<textarea class='materialize-textarea row' id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $(".input-boxes").append("<button class='right-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
         
-        title = data.title
+        
         // If there's a note in the article
         if (data.note) {
          
           $.getJSON("/notes", function(notes) {
-        
             // For each one
             for (var i = 0; i < notes.length; i++) {
               if (notes[i].name === title) {
                 // console.log(notes)
-                $('#oldNotes').append( '<p>'+ '<a class="delete">' + '| DELETE | ' + '</a>' + '<a class="date">' + notes[i].created.toString() + " " + '</a>' 
+                $('#oldNotes').append( '<p>'+ '<a class="delete" data-id="' + notes[i]._id + '" >' + '| DELETE | ' + '</a>' + '<a class="date">' + notes[i].created.toString() + " " + '</a>' 
                  + notes[i].title + " " + '<br>' 
                  + notes[i].body + " " + '</p>')
               }
@@ -164,3 +177,23 @@ var title;
     
   })
 
+ // Delete a note 
+// =========================================================
+$(document).on("click", ".delete", function(event) {
+  event.preventDefault();
+  // Grab the id associated with the article from the delete button
+  var thisId = $(this).attr("data-id");
+  console.log('remove this button: ' + thisId)
+ 
+  // Run a POST request to change the note, using what's entered in the inputs
+  $.ajax({
+    method: "PUT",
+    url: "/notes/delete/" + thisId,
+  })
+    // With that done clear the title data 
+    .then(function() {
+      console.log("this note has been deleted")
+    });
+    
+  location.reload();
+});

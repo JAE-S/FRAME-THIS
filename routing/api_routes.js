@@ -26,5 +26,7 @@ module.exports = function(db) {
 
     router.get("/notes/:id", appController.getNoteId)
 
+    router.put("/notes/delete/:id", appController.deleteNote)
+
     return router; 
 }

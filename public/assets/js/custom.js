@@ -2,16 +2,16 @@
  //               Front-End Javascript functions               //
 // ========================================================== //
 
-$('#view-article-container').hide();
-
-$('document').ready( () => {
-
-// Materialize functions 
+ // Hidden elements 
 // =========================================================
-    // Materialize functions 
-    $('.carousel').carousel();
+  $('#view-article-container').hide();
+
+  $('document').ready( () => {
+
+ // Materialize functions 
+// =========================================================
     $('.modal').modal();
-    $('.sidenav').sidenav();
+    // $('.sidenav').sidenav();
     $('#bodyinput').val('New Text');
     $('#bodyinput').trigger('autoresize');
     $(".dropdown-trigger").dropdown();
@@ -21,7 +21,7 @@ $('document').ready( () => {
     // $('input#name, input#last_name').characterCounter();
 }) 
 
-// Code for pagination
+ // Code for pagination
 // =========================================================
   function loadIt(){
     $('#myTable').pageMe({
@@ -35,32 +35,31 @@ $('document').ready( () => {
     });
   };
 
-// On click function to scrape articles 
+ // On click function to scrape articles 
 // =========================================================
   $(document).on("click", ".scrape", function() {
     if(newArticles > 0){
-      console.log("Please clear the current Articles first")
+      // console.log("Please clear the current Articles first")
     } else {
       $('.scrape').attr('href', "/scrape" )
       $('.no-articles').hide();
     }
   })
 
-// Modal on click functions 
+// go-back on click functions 
 // =========================================================
   $(document).on("click", '.go-back', function() {
     $('#article-results').show();
     $('#view-article-container').hide();
-    // $('#add-notes-box').empty();
-    // $('.no-articles').hide();
+    $("#myframe").attr('src', 'https://www.youtube.com/embed/O4ZAAi8awk4?autoplay=1&')
   })
 
+ // If no Articles are found 
+// =========================================================
   function noArticles(){
     if (totalArticles > 0) {
-      console.log("this button was clicked")
         $('.no-articles').hide();
     } else {
-      console.log("this button was clicked")
         $('.no-articles').show();
     }
   }

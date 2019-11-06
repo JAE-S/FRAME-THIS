@@ -6,26 +6,29 @@
    
       <section class="center-align">
         <div class="box"> 
-          
+        {{!-- Left container with iframe --}}
           <div class="left-box">
             <iframe id="myframe" src="https://www.youtube.com/embed/O4ZAAi8awk4?autoplay=1&">
             </iframe> 
           </div>
-
+        {{!-- Right container --}}
           <div class="right-box">
+            {{!-- Article results --}}
             <section id="article-results">
               <h4 class="total-articles"> Articles Found</h4>
               
               <div class="row" style="margin: 8px;">
+                {{!-- If no articles are found --}}
                 <div class="no-articles" style="margin-top: 80px">
                   Please click the button below to view articles from SHOWstudios
                     <a class="scrape BUTTON_NXA">Show me what's trending at SHOWstudios</a>
                 </div> 
-
+                {{!-- Buttons for pagination --}}
                 <div class="col-md-12 center text-center">
                   <ul class="pagination pager" id="myPager"></ul>
                 </div>
                 
+                {{!-- Article results table --}}
                 <section>
                   <table cellpadding="1" cellspacing="1" class=" table table-hover highlight" id="myTable">
                     <thead>
@@ -33,22 +36,30 @@
                     <tbody id="emp_body">
                     </tbody>
                   </table>
-
                 </section>
 
-              </div>
-            </section>
+              </div>  
+            </section> {{!-- End of article results container --}}
+
+            {{!-- View article container --}}
             <section id="view-article-container">
+              {{!-- Stores article data --}}
               <div id="add"></div>
 
-              <div id="notes">
-              </div>
+              {{!-- Notes container for notes already in the database --}}
+              <div id="notes"></div>
+
+              {{!-- Container to add new notes --}}
               <div class="row" id="add-notes-box">
                 <p id="add-note-info">Add a new note by completing the fields below. </p>
+                {{!-- Left side - input labels --}}
                 <div class="input-labels col s2"> </div>
-                  <div class="input-field input-boxes col s10"> </div>
+                {{!-- Right side - user inputs --}}
+                <div class="input-field input-boxes col s10"> </div>
+
               </div> 
             </section>
+            
           </div>
              <div id="links" style="height: 200px; overflow: scroll"></div>
           </div>

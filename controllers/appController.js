@@ -34,12 +34,10 @@ module.exports = db => {
           .then(dbArticle => res.json(dbArticle))
           .catch(err => res.json(err))
         },
-        // Grab a specific Article by id, populate it with it's note
+        // Populate notes with articles 
         // =========================================================  
         populateNote: (req, res) => {
-          db.Article.find({
-            // _id: req.params.id
-        })
+          db.Article.find({})
         .populate("note")
         .then(dbArticle => res.json(dbArticle))
         .catch(err => res.json(err))
@@ -61,17 +59,26 @@ module.exports = db => {
           .then(dbArticle => console.log(dbArticle))
           .catch(err => res.json(err));
         },
-        // Get article by ID 
+        // Find all of the notes
        // =========================================================
         getNote: (req, res) => {
-          db.Note.find({
-              // _id: req.params.id
-          })
+          db.Note.find({})
           .then(dbNote => res.json(dbNote))
           .catch(err => res.json(err))
       },
+       // Get Note by Id
+       // =========================================================
         getNoteId: (req, res) => {
         db.Note.findOne({
+            _id: req.params.id
+        })
+        .then(dbNote => res.json(dbNote))
+        .catch(err => res.json(err))
+     },
+      // Get Note by Id
+       // =========================================================
+       deleteNote: (req, res) => {
+        db.Note.findOneAndDelete({
             _id: req.params.id
         })
         .then(dbNote => res.json(dbNote))
