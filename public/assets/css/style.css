@@ -242,12 +242,17 @@ font-style: normal;
   padding-bottom: 10px; 
 }
 
-body p, body a, .BUTTON_NXA , .pagination li a{
+body p, body a, .BUTTON_NXA , .pagination li a, nav ul a{
   font-family: museo-sans, sans-serif;
 font-weight: 500;
 font-style: normal;
 letter-spacing: .2px;
 line-height: 1.5; 
+}
+
+nav ul a {
+  color: rgb(225, 225, 225);
+  margin-top: 20px;
 }
 
 .notes-title {
@@ -361,4 +366,39 @@ line-height: 1.5;
 
 .dropdown-content li>a {
   color: #920050;
+  margin-top: 0!important; 
+}
+
+#ham-menu {
+  position: relative;
+}
+
+#no-padding {
+  padding: 0!important; 
+}
+
+.modal-content h5, .modal-content p {
+  font-family: museo-sans, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  color:  #0f0f0f;
+}
+
+.modal-content h5 {
+  border-bottom: 1px solid #920050; 
+
+}
+
+.modal1 {
+background-color: rgb(201, 201, 201);
+top: 20%;
+}
+
+.modal {
+  width: 60%;
+}
+
+.modal-content p {
+  font-weight: bold; 
+
 }
