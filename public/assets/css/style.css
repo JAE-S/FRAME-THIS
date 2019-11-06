@@ -58,15 +58,16 @@ footer.page-footer {
 }
 
 .title {
-  font-family: essonnes-text, serif;
-  font-weight: 700;
-  font-style: normal;
+  font-family: rocky, serif;
+font-weight: 800;
+font-style: normal;
 letter-spacing: 1px;
 padding: 5px;
-font-size: 16px;
+font-size: 19px;
+ text-shadow: 1px 1px 2px #72023f;
 line-height: 1.5;
 background: #920050;
-color: rgb(233, 233, 233);
+color: rgb(225, 225, 225);
 background-image: -webkit-linear-gradient(bottom, #920050, #E0007B);
 background-image: -moz-linear-gradient(bottom, #920050, #E0007B);
 background-image: -ms-linear-gradient(bottom, #920050, #E0007B);
@@ -118,7 +119,7 @@ background-image: -webkit-linear-gradient(top, #F7F7F7, #9b9999);
    cursor: pointer;
     }
     
-    .BUTTON_NXA:hover, .page_link:hover, .badge:hover {
+    .BUTTON_NXA:hover, .page_link:hover, .badge:hover, .dropdown-content li>a:hover {
     background: #920050;
     color: rgb(201, 201, 201);
     background-image: -webkit-linear-gradient(top, #920050, #E0007B);
@@ -126,6 +127,7 @@ background-image: -webkit-linear-gradient(top, #F7F7F7, #9b9999);
     background-image: -ms-linear-gradient(top, #920050, #E0007B);
  background-image: -o-linear-gradient(top, #920050, #E0007B);
     background-image: linear-gradient(to bottom, #920050, #E0007B);
+    text-shadow: 1px 1px 2px #72023f;
    text-decoration: none;
     }
 
@@ -139,6 +141,13 @@ background-image: -webkit-linear-gradient(top, #F7F7F7, #9b9999);
       padding: 8px;
       color: #1f1f1f;
       line-height: 1.5;
+      max-height: 200px; 
+      overflow: scroll; 
+    }
+    .description p {
+      margin-right: 8px; 
+      margin-left: 8px; 
+
     }
 
     h6, h5 {
@@ -223,30 +232,37 @@ input::-webkit-input-placeholder {
   color:   #E0007B;
 }
 
-h5 {
-  font-family: essonnes-headline, serif;
-  font-weight: 900;
-  font-style: normal;
+h5, h4 {
+  
+  font-family: essonnes-display, serif;
+font-weight: 900;
+font-style: normal;
   margin: 0 8px 20px 8px; 
   border-bottom: 1px solid black; 
   padding-bottom: 10px; 
 }
 
-body p, body a, .BUTTON_NXA {
+body p, body a, .BUTTON_NXA , .pagination li a{
   font-family: museo-sans, sans-serif;
-font-weight: 300;
+font-weight: 500;
 font-style: normal;
+letter-spacing: .2px;
+line-height: 1.5; 
 }
 
 .notes-title {
+  font-family: rocky, serif;
+  font-weight: 800;
+  font-style: normal;
   color: #920050; 
   border-top: 2px solid #920050; 
   border-bottom: 2px solid #920050; 
   padding: 8px;
   margin: 0!important; 
+  position: relative; 
 }
 
-.add-note, #titleinput  {
+.add-note, #titleinput, #bodyinput  {
   color: #920050; 
   /* border-top: 1px solid #920050;  */
   border-bottom: 1px solid #920050; 
@@ -260,23 +276,24 @@ font-style: normal;
 }
 
 #oldNotes {
-  max-height: 150px; 
+  max-height: 166px; 
   overflow: scroll; 
-  padding-top: 10px;
+  padding: 10px 0px;
 }
-
+/* 
 .right-box {
   border-bottom: 2px solid #920050; 
   margin: 8px;
-}
+} */
 .date, .delete {
   font-size: .8em;
   color:  #920050; 
 }
 
 .input-labels {
-  padding-top: 17px!important; 
+  padding-top: 22px!important; 
   color:  #920050; 
+  font-size: 1.1em; 
   /* margin-left: 8px!important; */
 }
 
@@ -289,17 +306,59 @@ font-style: normal;
 
 #add-notes-box {
   border-top: 1px solid #920050; 
-  margin-left: 8px; 
-  margin-right: 8px; 
+  border-bottom: 2px solid #920050; 
+  margin: 0px 8px; 
+  max-width: 464px; 
+  width: 100%;
+  bottom: 119px; 
+  position: absolute;
+  /* margin-right: 8px;  */
 }
 
 #add-note-info {
   font-weight: bold; 
-  padding: 14px 0; 
+  padding: 4px 0; 
   color: grey; 
 }
 #add-note-info:hover {
   color:  #920050; 
-  border-bottom: 1px solid grey; 
- 
+  border-bottom: 1px solid grey;  
+}
+
+.input-boxes {
+  margin-top: 6px; 
+  margin-right: 0px!important; 
+  padding-right: 0px!important; 
+}
+
+#bodyinput {
+  max-height: 44px; 
+  overflow: scroll; 
+}
+
+.no-notes-alert {
+  color:  #920050; 
+  font-weight: bold; 
+}
+.headline { 
+  font-family: rocky, serif;
+  font-weight: 800;
+  font-style: normal;
+  color: #920050;
+  border-bottom: 1px solid #920050; 
+  margin-bottom: 6px;
+}
+
+.dropdown-content {
+  max-width: 160px; 
+}
+
+#dropdown {
+  top: 64px!important; 
+  width: 100%!important; 
+  background-color: rgb(233, 233, 233); 
+}
+
+.dropdown-content li>a {
+  color: #920050;
 }

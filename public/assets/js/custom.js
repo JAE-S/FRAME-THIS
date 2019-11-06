@@ -14,6 +14,7 @@ $('document').ready( () => {
     $('.sidenav').sidenav();
     $('#bodyinput').val('New Text');
     $('#bodyinput').trigger('autoresize');
+    $(".dropdown-trigger").dropdown();
           
     // $('select').formSelect();
     // Materialize character counter 
@@ -50,6 +51,7 @@ $('document').ready( () => {
   $(document).on("click", '.go-back', function() {
     $('#article-results').show();
     $('#view-article-container').hide();
+    // $('#add-notes-box').empty();
     // $('.no-articles').hide();
   })
 

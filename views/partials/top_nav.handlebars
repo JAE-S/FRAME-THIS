@@ -1,8 +1,9 @@
  <header> 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <div class="container nav-wrapper">
             <a class="navbar-brand" href="">FASHION-THAT</a>
-             <a href="#mobile-demo" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+           
+            <a style="position: relative" href="#dropdown" data-activates = "dropdown" class="sidenav-trigger dropdown-button right"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li><a class="scrape">Find Articles</a></li>
                 <li><a class="modal-trigger" href="#modal1" >Clear Articles</a></li>
@@ -11,12 +12,18 @@
                 {{!-- <li><i class="material-icons">favorite</i></a></li> --}}
             </ul>
         </div>
-    </nav>
+ 
+<!-- Dropdown Structure -->
 
-      <ul class="sidenav" id="mobile-demo">
-    <li><a lass="scrape" href="">Find Articles</a></li>
-    <li><a class="modal-trigger" href="#modal1">Clear Articles</a></li>
-    <li><a href="">Articles<span id="new-articles" class="new badge" style="background-color:  #920050"></span></a></li>
-  </ul>
+ <ul id="dropdown"class ="dropdown-content right" style="width: 90px;">
+          {{!-- <li><a href="">Favorites</a></li> --}}
+          {{!-- <li><i class="material-icons">favorite</i></a></li> --}}
+         <li><a href="">Articles<span id="new-articles" class="new badge" style="background-color:  #920050"></span></a></li>
+         <li class = "divider"></li>
+        <li><a class="scrape">Find Articles</a></li>
+        <li><a class="modal-trigger" href="#modal1" >Clear Articles</a></li>
+      </ul>
+         </nav>
+
+      
 </header>
-

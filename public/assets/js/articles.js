@@ -63,7 +63,7 @@ var title;
     })
       // With that done
       .then(function() {
-      
+        // $('#add-notes-box').empty();
         title = ("");
       });
   
@@ -81,6 +81,11 @@ var title;
     $('#view-article-container').show();
     $("#notes").show(); 
     $("#notes").empty();
+    $('.input-labels').show();
+    $('.input-labels').empty();
+    $('.input-boxes').show();
+    $('.input-boxes').empty();
+ 
 
     var thisId = $(this).attr("data-id");
     var myFrame = $("#myframe");
@@ -111,16 +116,18 @@ var title;
         var content = $('<div class="info">');
         content.html( "<a class='left-align go-back BUTTON_NXA'>" + "Go Back" + "</a>" 
           + "<a class='right-align view-article BUTTON_NXA' target='_blank' href='" + data.link + "'>" + "Visit site" + "</a>" 
+        
           + '<div class="description z-depth-2" style="margin: 20px 8px">'
-          + '<h6 class="left-align" >' + '<a class="article-details">'+ "Category: " + '</a>' + data.category + " " + '</h6>' 
-          + '<h6 class="left-align">' + '<a class="article-details">' + "Title: " + '</a>' + data.title + " " + '</h6>' 
-          + '<h6 class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</h6>' 
-          + '<h6 class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</h6>' + '<br>' 
+          +"<h5 class='headline left-align border-lines'>" + data.title + "</h5>" 
+          + '<p class="left-align" >' + '<a class="article-details">'+ "Category: " + '</a>' + data.category + " " + '</p>' 
+          // + '<p class="left-align">' + '<a class="article-details">' + "Title: " + '</a>' + data.title + " " + '</p>' 
+          + '<p class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</p>' 
+          + '<p class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</p>' 
           + '</div>')
 
         $('#add').append(content)
         // The title of the article
-        $("#notes").append("<h5 class='border-lines notes-title'>" + "Notes for: " + data.title + "</h5>");
+        $("#notes").append("<h5 class='border-lines notes-title'>" + "Notes" + "</h5>");
         // Notes saved in the database
         $("#notes").append("<div class='left-align' id='oldNotes'>");
 
@@ -130,7 +137,7 @@ var title;
         $(".input-boxes").append("<input class=' row add-note' autocomplete='off' id='titleinput' placeholder='Jane' name='title'>");
     
         // A textarea to add a new note body
-        $(".input-boxes").append("<textarea class='row' id='bodyinput' name='body'></textarea>");
+        $(".input-boxes").append("<textarea class='materialize-textarea row' id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $(".input-boxes").append("<button class='right-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
         
@@ -150,7 +157,9 @@ var title;
               }
             }
           })
-        } 
+        } else { 
+          $('#oldNotes').append('<p>' + 'There are currently' + '<a class="no-notes-alert">' + ' 0 ' + '</a>' + 'notes for '+ title + '.' + '</p>');
+        }
     })
     
   })
