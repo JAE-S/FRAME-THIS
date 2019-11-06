@@ -275,7 +275,7 @@ font-style: normal;
 }
 
 .input-labels {
-  padding-top: 13px!important; 
+  padding-top: 17px!important; 
   color:  #920050; 
   /* margin-left: 8px!important; */
 }
@@ -283,9 +283,23 @@ font-style: normal;
 #savenote {
   margin-top: 0!important; 
   display: block;
+  margin-left: 0px!important; 
+  background-color: transparent; 
 }
 
 #add-notes-box {
+  border-top: 1px solid #920050; 
   margin-left: 8px; 
   margin-right: 8px; 
+}
+
+#add-note-info {
+  font-weight: bold; 
+  padding: 14px 0; 
+  color: grey; 
+}
+#add-note-info:hover {
+  color:  #920050; 
+  border-bottom: 1px solid grey; 
+ 
 }

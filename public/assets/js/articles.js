@@ -124,13 +124,13 @@ var title;
         // Notes saved in the database
         $("#notes").append("<div class='left-align' id='oldNotes'>");
 
-        $(".input-labels").append("<h6 class='row'>" + "Username: " + "</h6>");
-        $(".input-labels").append("<h6 class='row'>" + "Add Note: " + "</h6>");
+        $(".input-labels").append("<p class='row'>" + "Username: " + "</p>");
+        $(".input-labels").append("<p class='row'>" + "Add Note: " + "</p>");
         // An Input to save the user's name 
-        $(".input-boxes").append("<input class=' row add-note' autocomplete='off' id='titleinput' placeholder='To create a new note please enter your name' name='title'>");
+        $(".input-boxes").append("<input class=' row add-note' autocomplete='off' id='titleinput' placeholder='Jane' name='title'>");
     
         // A textarea to add a new note body
-        $(".input-boxes").append("<textarea class='row' id='bodyinput' name='body'>Add your note here</textarea>");
+        $(".input-boxes").append("<textarea class='row' id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $(".input-boxes").append("<button class='right-align BUTTON_NXA' data-id='" + data._id + "' id='savenote'>Save Note</button>");
         
