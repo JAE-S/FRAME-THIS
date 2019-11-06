@@ -45,7 +45,7 @@
       // Sets the total number of generated elements to the totalArticles variable 
       totalArticles = data.length
 
-      $('#new-articles').prepend(newArticles)
+      $('.new-articles').prepend(newArticles)
       $('.total-articles').prepend(totalArticles)
       // Function for noArticles  -> Code under custom.js file  
       // Lets users know that no articles were found 
@@ -120,7 +120,7 @@
             url: "/articles/" + thisId,
             }) .then(function(data) {
               // Add total number of unread articles to the badge in the nav bar 
-              $('#new-articles').html(newArticles)
+              $('.new-articles').html(newArticles)
               console.log("This article has been viewed " + data.opened);
             })
         }
