@@ -47,6 +47,8 @@
 <details><summary><b>Click To View</b></summary>
          
          Fashion That 
+         ├── Controllers
+         │   └── appController.js
          ├── models
          │   ├── articles.js
          │   ├── index.js
@@ -64,14 +66,16 @@
          │       │   ├── custom.js
          │       │   └── jquery.twbsPagination.min.js
          │       └── materialize.js
-         │       │   ├── materialize.js
-         │       │   └── materialize.min.js
+         │           ├── materialize.js
+         │           └── materialize.min.js
          ├── routing
-         │       └── routes.js
+         │       ├── api_routes.js
+         │       └── html_routes.js
          ├── views
          │       ├── layouts
          │       │   └── main.handlebars
          │       ├── partials
+         │       │   ├── modal_clear_data.handlebars
          │       │   ├── footer.handlebars
          │       │   └── top_nav.handlebars
          │       └── index.handlebars
