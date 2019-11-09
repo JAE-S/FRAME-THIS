@@ -24,6 +24,7 @@
  // Code for pagination
 // =========================================================
   function loadIt(){
+
     $('#myTable').pageMe({
         pagerSelector:'#myPager',
         // activeColor: 'rgb(146, 0, 80)',
@@ -31,7 +32,7 @@
         nextText:'Siguiente',
         showPrevNext:true,
         hidePageNumbers:false,
-        perPage: 3
+        perPage: 2
     });
   };
 
