@@ -136,12 +136,12 @@ background-image: -webkit-linear-gradient(top, #F7F7F7, #9b9999);
       margin: 0 auto;
     }
 
-    .description {
+    .description, .descriptions {
       background-color: rgb(233, 233, 233); 
       padding: 8px;
       color: #1f1f1f;
       line-height: 1.5;
-      max-height: 200px; 
+      /* max-height: 120px;  */
       overflow: scroll; 
     }
     .description p {
@@ -285,11 +285,12 @@ nav ul a {
   overflow: scroll; 
   padding: 10px 0px;
 }
-/* 
-.right-box {
-  border-bottom: 2px solid #920050; 
-  margin: 8px;
-} */
+
+  .right-box {
+    max-height: 700px;
+   overflow: scroll; 
+   
+  }
 .date, .delete {
   font-size: .8em;
   color:  #920050; 
@@ -315,7 +316,7 @@ nav ul a {
   margin: 0px 8px; 
   max-width: 464px; 
   width: 100%;
-  bottom: 119px; 
+  bottom: 128px; 
   position: absolute;
   /* margin-right: 8px;  */
 }

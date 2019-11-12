@@ -131,11 +131,11 @@
             '<a class="left-align go-back BUTTON_NXA">' + "Go Back" + '</a>' 
           + '<a class="right-align view-article BUTTON_NXA" target="_blank" href="' + data.link + '">' + "Visit site" + '</a>'
           // Article details 
-          + '<div class="description z-depth-2" style="margin: 20px 8px">'
+          + '<div class="descriptions z-depth-2" style="margin: 20px 8px">'
           + '<h5 class="headline left-align border-line">' + title + '</h5>' 
           + '<p class="left-align" >' + '<a class="article-details">'+ "Category: " + '</a>' + data.category + " " + '</p>' 
           + '<p class="left-align">' + '<a class="article-details">' + "Date Published: " + '</a>' + data.date + " " + '</p>' 
-          + '<p class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</p>' 
+          // + '<p class="left-align">' + '<a class="article-details">' + "Description: " + '</a>' + data.description + " " + '</p>' 
           + '</div>')
 
         $('#add').append(content)
