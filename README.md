@@ -12,7 +12,7 @@
   * [Technologies](#technologies)
   * [Features And Functionality](#features-and-functionality)
   * [File Architecture](#file-architecture)
-  * [Click here to visit the site!](https://bloodcurdling-flesh-78620.herokuapp.com)
+  * [Click here to visit the site!](https://fashion-that.herokuapp.com/)
 ---
 
 ## Technologies
