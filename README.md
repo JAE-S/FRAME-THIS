@@ -2,7 +2,7 @@
 
  <img src="readme_assets/fashion_that_portfolio_cover.gif" align="left"
      title="Fashion-That" alt="Fashion-That" width="30%" height="auto">
-# Welcome to Fashion That
+# Welcome to FASHION-THAT!
 
 #### Fashion That is a web application that allows Fashion enthusiasts to review the latest articles from SHOWstudios'. Utilizing an i-frame users can now view articles and take notes all in one place without ever leaving the browser window (although that option is provided as well).
 
