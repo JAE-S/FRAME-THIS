@@ -1,4 +1,7 @@
 
+
+ <img src="readme_assets/fashion_that_portfolio_cover.gif" align="left"
+     title="Fashion-That" alt="Fashion-That" width="30%" height="auto">
 # Welcome to Fashion That
 
 #### Fashion That is a web application that allows Fashion enthusiasts to review the latest articles from SHOWstudios'. Utilizing an i-frame users can now view articles and take notes all in one place without ever leaving the browser window (although that option is provided as well).
@@ -6,17 +9,12 @@
 ---
 
 ## Table of Contents
-  * [Design Process](#design-process)
   * [Technologies](#technologies)
   * [Features And Functionality](#features-and-functionality)
   * [File Architecture](#file-architecture)
   * [Click here to visit the site!](https://bloodcurdling-flesh-78620.herokuapp.com)
 ---
 
-## Design Process
-```
-
-```
 ---
 ## Technologies
 > <b>Design Tools:</b>
@@ -37,9 +35,9 @@
 ---
 
 ## Features And Functionality
-```
-
-```
+* Demo Video 
+     <img src="readme_assets/fashion_that_demo.gif" align="center"
+     title="Fashion-That Demo" alt="Fashion-That Demo">
 ---
 
 ## File Architecture
