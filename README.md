@@ -15,7 +15,6 @@
   * [Click here to visit the site!](https://bloodcurdling-flesh-78620.herokuapp.com)
 ---
 
----
 ## Technologies
 > <b>Design Tools:</b>
   * Adobe Photoshop
